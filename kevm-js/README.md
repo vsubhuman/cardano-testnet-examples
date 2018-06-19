@@ -1,4 +1,4 @@
-# KEVM KS (web3) example
+# KEVM JS (web3) example
 
 Source: https://t.me/CardanoDevelopersOfficial/6921
 
