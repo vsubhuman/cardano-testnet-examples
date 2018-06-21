@@ -33,6 +33,7 @@ SECOND: after 'npm install' you must apply the following patch to node_modules/w
  
 const TARGET_ACCOUNT_BALANCE = 40000000000000000
 const FAUCET_INTERVAL = 60000  // to prevent faucet error (too many requests in given amount of time)
+const WAIT_BETWEEN_CALLS = 5000  // to ensure increment request was executed before calling new counter value
 
 const CONFIGURATION = 'test2'  // to work with and switch between different accounts and contracts (config is stored in ./[name].json)
 
@@ -229,6 +230,8 @@ const run = async () => {
     gas: 100000,
     gasPrice: 5000000000
   })
+  logger.info('waiting ' + WAIT_BETWEEN_CALLS / 1000 + ' seconds...')
+  await sleep(WAIT_BETWEEN_CALLS);
   const afterCount = await instance.methods.getCount().call()
   logger.info('Count after=' + afterCount)
   }
@@ -241,4 +244,9 @@ try {
 }
 
 
+// ***********************************************************************
+// Functions
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
