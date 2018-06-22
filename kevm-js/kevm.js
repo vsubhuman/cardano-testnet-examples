@@ -2,7 +2,7 @@
 FIRST: copy and run the following npm install lines into your console to install all all required modules (if not allready installed)
 
 npm install web3
-npm install crypto
+npm install solc
 npm install request-promise-native
 npm install log4js
 npm install nconf
@@ -35,9 +35,13 @@ const TARGET_ACCOUNT_BALANCE = 40000000000000000
 const FAUCET_INTERVAL = 60000  // to prevent faucet error (too many requests in given amount of time)
 const WAIT_BETWEEN_CALLS = 5000  // to ensure increment request was executed before calling new counter value
 
-const CONFIGURATION = 'test2'  // to work with and switch between different accounts and contracts (config is stored in ./[name].json)
+// to work with and switch between different accounts and contracts 
+// config is stored in ./config_[CONFIGURATION].json
+const CONFIGURATION = 'test2'  
 
-const LOGGER_LEVEL = 'debug';   // fatal < errror < warn < info < debug
+// console output is also logged with timestamps in ./config_[CONFIGURATION].log
+// possible levels are: fatal < errror < warn < info < debug
+const LOGGER_LEVEL = 'debug';   
 
 const providerUrl = 'https://kevm-testnet.iohkdev.io:8546'
 //const providerUrl = 'http://localhost:3000'
@@ -45,7 +49,6 @@ const providerUrl = 'https://kevm-testnet.iohkdev.io:8546'
 // ******************************************************************************
 
 const Web3 = require('web3')
-const crypto = require('crypto')
 const request = require('request-promise-native')
 
 
